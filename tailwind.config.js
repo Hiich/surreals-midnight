@@ -8,6 +8,8 @@ module.exports = {
       },
       backgroundImage: {
         'storm': "url('/images/background.png')",
+        'mintBg': "url('/images/mintBg.png')",
+        'poolBg': "url('/images/poolBg.png')"
       }
     },
   },

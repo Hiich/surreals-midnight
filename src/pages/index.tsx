@@ -1,12 +1,12 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 const Home: NextPage = () => {
-  // const poolAudio = new Audio("/sounds/pool.mp3")
-  // const mintAudio = new Audio("/sounds/mint.mp3")
+  const router = useRouter()
   return (
-    <div className='h-screen bg-storm bg-cover '>
+    <div className='h-screen bg-storm bg-center bg-cover '>
       <Head>
         <title>Surreals Midnight</title>
         <meta name="description" content="Surreals Midnight" />
@@ -35,8 +35,12 @@ const Home: NextPage = () => {
             <button
               onClick={() => {
                 (new Audio("/sounds/pool.mp3")).play()
+                router.push('/pool')
               }}
-              className='bg-[#461B1C] w-[90%] p-2 px-10 text-white rounded-lg my-4 '>The Dark Portal</button>
+              className='bg-[#461B1C] w-[90%] p-2 px-10 text-white rounded-lg my-4 '
+            >
+              The Dark Portal
+            </button>
           </div>
         </div>
 
@@ -58,9 +62,12 @@ const Home: NextPage = () => {
             <button
               onClick={() => {
                 (new Audio("/sounds/mint.mp3")).play()
+                router.push('/mint')
               }}
               className='bg-[#461B1C] w-[90%] p-2 px-10 text-white rounded-lg my-4 mt-[18px] '
-            >Mint coming soon</button>
+            >
+              Mint coming soon
+            </button>
           </div>
         </div>
       </div>
