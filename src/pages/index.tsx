@@ -3,6 +3,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 const Home: NextPage = () => {
+  // const poolAudio = new Audio("/sounds/pool.mp3")
+  // const mintAudio = new Audio("/sounds/mint.mp3")
   return (
     <div className='h-screen bg-storm bg-cover '>
       <Head>
@@ -15,7 +17,7 @@ const Home: NextPage = () => {
         <img src="/images/logo.png" />
       </div>
 
-      <div className='flex flex-row justify-between mx-60'>
+      <div className='flex flex-col sm:flex-row justify-between mx-60'>
         <div className='flex flex-col items-center w-[319px] relative' >
           <div className='bg-[#461B1C] w-fit h-[67px] rounded-2xl px-5 mb-4 z-10 absolute top-0 '>
             <img src="/images/surreals.png" className='mt-[-8px]' />
@@ -30,7 +32,11 @@ const Home: NextPage = () => {
                 Deposit Surreals into the Dark Portal to receive a free Dark Surreal mint. A maximum of 3 Surreals per wallet can be sent through the portal.
               </span>
             </div>
-            <button className='bg-[#461B1C] w-[90%] p-2 px-10 text-white rounded-lg my-4 '>The Dark Portal</button>
+            <button
+              onClick={() => {
+                (new Audio("/sounds/pool.mp3")).play()
+              }}
+              className='bg-[#461B1C] w-[90%] p-2 px-10 text-white rounded-lg my-4 '>The Dark Portal</button>
           </div>
         </div>
 
@@ -49,7 +55,12 @@ const Home: NextPage = () => {
                 Free mint for those who deposit, 0.05 ETH for holders and surreaLIST, 0.0666 ETH public.
               </span>
             </div>
-            <button className='bg-[#461B1C] w-[90%] p-2 px-10 text-white rounded-lg my-4 mt-[18px] '>Mint coming soon</button>
+            <button
+              onClick={() => {
+                (new Audio("/sounds/mint.mp3")).play()
+              }}
+              className='bg-[#461B1C] w-[90%] p-2 px-10 text-white rounded-lg my-4 mt-[18px] '
+            >Mint coming soon</button>
           </div>
         </div>
       </div>
