@@ -7,9 +7,12 @@ module.exports = {
         azonix: ['Azonix', 'sans-serif'],
       },
       backgroundImage: {
-        'storm': "url('/images/background.png')",
-        'mintBg': "url('/images/mintBg.png')",
-        'poolBg': "url('/images/poolBg.png')"
+        'storm': "url('/images/storm.png')",
+        'stormMobile': "url('/images/stormMobile.png')",
+        'crimson': "url('/images/crimson.png')",
+        'crimsonMobile': "url('/images/crimsonMobile.png')",
+        'endOflight': "url('/images/endOflight.png')",
+        'endOflightMobile': "url('/images/endOfLightMobile.png')"
       }
     },
   },
