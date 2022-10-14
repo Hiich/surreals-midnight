@@ -5,8 +5,11 @@ import Mineral from '@/../public/images/mineral1.png'
 import Fungi from '@/../public/images/fungi1.png'
 import Logo from '@/../public/images/logo.png'
 import LogoMobile from '@/../public/images/logoMobile.png'
+import useDappStore from '@/hooks/useDappStore'
 
 const Pool: NextPage = () => {
+    const { account, mint, connect } = useDappStore()
+
     return (
         <div className='h-screen bg-crimsonMobile sm:bg-crimson bg-cover bg-center bg-no-repeat relative'
             style={{
@@ -30,7 +33,8 @@ const Pool: NextPage = () => {
                     <div className='bg-black p-5'>
                         <Image src="/images/prereveal.gif" height={"240"} width={"263"} />
                     </div>
-                    <button className='bg-black rounded-xl p-2 px-20 w-fit text-white'>Connect wallet</button>
+                    {!account && <button className='bg-black rounded-xl p-2 px-20 w-fit text-white' onClick={connect}>Connect wallet</button>}
+                    {account && <button className='bg-black rounded-xl p-2 px-20 w-fit text-white'>Mint</button>}
                 </div>
                 <div className='xl:mt-4 hidden lg:flex absolute bottom-0 left-0'>
                     <Image src={Fungi} />

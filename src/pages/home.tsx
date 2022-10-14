@@ -12,7 +12,7 @@ import { ethers } from 'ethers'
 
 const Home: NextPage = () => {
   const router = useRouter()
-  // const { account } = useDappStore()
+  const { account } = useDappStore()
 
   // useEffect(() => {
   //   if (account == undefined)
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
       </div>
 
       <div className='hidden sm:flex justify-center flex-col w-full items-center absolute bottom-0'>
-        <Image src={Coral} className='mt-10 hidden sm:flex items-center' />
+        <Image src={Coral} className='mt-10 hidden lg:flex items-center' />
       </div>
 
       <div className='flex flex-col mt-10 sm:mt-0 sm:flex-row sm:justify-between justify-center items-center gap-y-10 sm:mx-60'>
@@ -60,9 +60,9 @@ const Home: NextPage = () => {
             <button
               onClick={() => {
                 (new Audio("/sounds/pool.mp3")).play()
-                router.push('/pool')
+                router.push('/home')
               }}
-              className='bg-[#461B1C] w-[90%] p-2 px-10 text-white rounded-lg my-4 '
+              className='bg-[#461B1C] w-[90%] p-2 px-10 text-white rounded-lg my-4 z-20'
             >
               The Dark Portal
             </button>
@@ -88,7 +88,7 @@ const Home: NextPage = () => {
                 (new Audio("/sounds/mint.mp3")).play()
                 router.push('/mint')
               }}
-              className='bg-[#461B1C] w-[90%] p-2 px-10 text-white rounded-lg my-4 mt-[18px] '
+              className='bg-[#461B1C] w-[90%] p-2 px-10 text-white rounded-lg my-4 mt-[18px] z-20'
             >
               Mint coming soon
             </button>
