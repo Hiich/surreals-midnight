@@ -13,8 +13,6 @@ export type DappStore = {
     approve: () => void;
 }
 
-console.log(typeof window)
-
 const useDappStore = create<
     DappStore
 >((set, get) => ({
@@ -29,7 +27,6 @@ const useDappStore = create<
     connect: async () => {
         console.log("Connecting")
         const provider = new ethers.providers.Web3Provider(window.ethereum)
-        console.log(provider)
         const accounts = await provider.send("eth_requestAccounts", []);
         const account = accounts[0]
         // const signer = provider.getSigner()
