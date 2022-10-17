@@ -29,7 +29,7 @@ const Pool: NextPage = () => {
                     <Image src={LogoMobile} />
                 </div>
 
-                <div className=' sm:pt-36 flex flex-col gap-2 justify-center  items-center w-full h-full'>
+                <div className='pt-36 flex flex-col gap-2 justify-center  items-center w-full h-full'>
                     <div className='bg-black p-5'>
                         <Image src="/images/prereveal.gif" height={"240"} width={"263"} />
                     </div>
