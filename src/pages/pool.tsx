@@ -8,7 +8,7 @@ import { useEffect } from 'react'
 
 const Pool: NextPage = () => {
     const { account, connect } = useDappStore()
-    // const router = useRouter()
+    const router = useRouter()
     // useEffect(() => {
     //     if (account != undefined)
     //         router.push("/home")
@@ -25,10 +25,14 @@ const Pool: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <div className='w-full h-full flex justify-center items-end'>
+            <div className='w-full h-full flex justify-end flex-col items-center'>
                 <button className='bg-[#461B1C] p-2 pb-4 px-20 text-white text-2xl rounded-2xl mb-40'
                     onClick={connect}>
                     Connect Wallet
+                </button>
+                <button className='bg-[#461B1C] p-2 pb-4 px-16 text-white text-2xl rounded-2xl mb-40'
+                    onClick={() => router.push('/')}>
+                    Back to Home Page
                 </button>
             </div>
         </div>
