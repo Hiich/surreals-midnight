@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-
+import Surreals from "@/../public/images/surreals.gif"
 export const MintingCard = () => {
     const router = useRouter()
 
@@ -12,8 +12,8 @@ export const MintingCard = () => {
             <div className='flex flex-col items-center w-[319px]' >
                 <div className='flex flex-col bg-black justify-center items-center  top-[33px]'>
                     <div className='text-white text-center mx-4 mt-12 h-full flex flex-col'>
-                        <Image src="/images/surreals.gif" height={"218"} width={"267"} />
-
+                        {/* <Image src="/images/surreals.gif" height={"218"} width={"267"} className="rounded-xl mx-10" /> */}
+                        <Image src={Surreals} className="rounded-xl mx-10" />
                         <span className='mt-4'>
                             A collection of 10,000 hand-painted portraits with a surreal, vintage naturalist aesthetic.</span><br />
                         <span >

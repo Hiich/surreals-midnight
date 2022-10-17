@@ -39,10 +39,10 @@ const Home: NextPage = () => {
       </div>
 
       <div className='hidden sm:flex justify-center flex-col w-full items-center absolute bottom-0'>
-        <Image src={Coral} className='mt-10 hidden lg:flex items-center' />
+        <Image src={Coral} className='mt-10 hidden lg:flex items-center'  />
       </div>
 
-      <div className='flex flex-col mt-24 sm:mt-0 sm:flex-row sm:justify-between justify-center items-center gap-y-40 sm:mx-60'>
+      <div className='flex flex-col mt-24 sm:mt-0 sm:flex-row sm:justify-between justify-center items-center gap-y-40 lg:mx-60'>
         <MintingCard />
         <PoolCard />
       </div>

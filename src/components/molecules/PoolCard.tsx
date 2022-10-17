@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-
+import PreReveal from "@/../public/images/prereveal.gif"
 export const PoolCard = () => {
     const router = useRouter()
 
@@ -10,10 +10,10 @@ export const PoolCard = () => {
                 <img src="/images/midnight.png" className='mt-1' />
             </div>
             <div className='flex flex-col items-center w-[319px]  sm:mt-[-52px]' >
-                <div className='flex flex-col bg-black justify-center items-center  top-[85px]'>
+                <div className='flex flex-col bg-black justify-center items-center  top-[85px] '>
                     <div className='text-white text-center mx-4 mt-12 h-full flex flex-col'>
-                        <Image src="/images/prereveal.gif" height={"240"} width={"263"} />
-
+                        {/* <Image src="/images/prereveal.gif" height={"240"} width={"263"} /> */}
+                        <Image src={PreReveal} className="rounded-xl mx-10"/>
                         <span className='mt-4'>
                             Surreals that are relinquished to the Dark Portal will be rewarded with Dark Surreals.
                         </span><br />
@@ -26,7 +26,7 @@ export const PoolCard = () => {
                             (new Audio("/sounds/mint.mp3")).play()
                             router.push('/mint')
                         }}
-                        className='bg-[#461B1C] w-[90%] p-2 px-10 text-white rounded-lg my-4 mt-[18px] z-20'
+                        className='bg-[#461B1C] w-[90%] p-2 px-10 text-white rounded-lg my-4 mt-10 z-20'
                     >
                         Mint coming soon
                     </button>
