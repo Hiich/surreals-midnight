@@ -12,7 +12,7 @@ const Pool: NextPage = () => {
     const { account, mint, connect } = useDappStore()
     const router = useRouter()
     return (
-        <div className='h-screen bg-crimsonMobile sm:bg-crimson bg-cover bg-center bg-no-repeat relative'
+        <div className='h-full sm:h-screen bg-crimsonMobile sm:bg-crimson bg-cover bg-center bg-no-repeat relative pb-10 sm:pb-0'
             style={{
                 backgroundSize: "100% 100%"
             }}>
