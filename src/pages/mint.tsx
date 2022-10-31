@@ -7,9 +7,12 @@ import Logo from '@/../public/images/logo.png'
 import LogoMobile from '@/../public/images/logoMobile.png'
 import useDappStore from '@/hooks/useDappStore'
 import { useRouter } from 'next/router'
+import { useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
 
 const Pool: NextPage = () => {
-    const { account, mint, connect } = useDappStore()
+    const { account, mint, connect, sacrifices } = useDappStore()
+    const [mintAmount, setMintAmount] = useState(1)
     const router = useRouter()
     return (
         <div className='h-full sm:h-screen bg-crimsonMobile sm:bg-crimson bg-cover bg-center bg-no-repeat relative pb-10 sm:pb-0'
@@ -22,7 +25,8 @@ const Pool: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <div>
+            <div className='flex flex-col justify-evenly items-center h-full'>
+                <Toaster />
                 <div className='sm:flex hidden justify-center flex-col w-full items-center pt-10'>
                     <Image src={Logo} />
                 </div>
@@ -30,12 +34,44 @@ const Pool: NextPage = () => {
                     <Image src={LogoMobile} />
                 </div>
 
-                <div className='pt-36 flex flex-col gap-2 justify-center  items-center w-full h-full'>
+                <div className='flex flex-col gap-2 justify-center  items-center w-fit h-full pt-10 sm:pt-0'>
                     <div className='bg-black p-5'>
                         <Image src="/images/prereveal.gif" height={"240"} width={"263"} />
                     </div>
-                    {!account && <button className='bg-black rounded-xl p-2 px-20 w-fit text-white' onClick={connect}>Connect wallet</button>}
-                    {account && <button className='bg-black rounded-xl p-2 px-20 w-fit text-white'>Mint</button>}
+                    {!account ?
+                        <button className='bg-black rounded-xl p-2 px-20 w-fit text-white' onClick={connect}>Connect wallet</button> :
+
+                        <div className='bg-black rounded-xl text-white flex flex-col justify-center items-center py-4 gap-y-4 w-64'>
+                            <div className='flex flex-row gap-x-4 '>
+                                <button onClick={() => {
+                                    if (mintAmount > 1)
+                                        setMintAmount(mintAmount - 1)
+                                }}>
+                                    -
+                                </button>
+                                <span className="w-fit bg-[#D9D9D9] text-black rounded-xl px-4">{mintAmount}</span>
+                                <button onClick={() => {
+                                    if (mintAmount < 10)
+                                        setMintAmount(mintAmount + 1)
+                                }}>
+                                    +
+                                </button>
+                            </div>
+                            <button
+                                className='rounded-xl p-2 px-10 w-fit bg-[#D9D9D9] text-black'
+                                onClick={() =>
+                                    toast.promise(mint(mintAmount), {
+                                        success: "Successfully minted",
+                                        loading: "Minting...",
+                                        error: "Error while minting, please contact our support"
+                                    })}>
+                                MINT
+                            </button>
+                            <span className='bg-black rounded-xl p-2 px-16 w-fit text-white'>
+                                Free mints available : {sacrifices}
+                            </span>
+                        </div>
+                    }
                     <button className='bg-black rounded-xl p-2 px-16 w-fit text-white'
                         onClick={() => router.push('/')}>
                         Back to Home Page

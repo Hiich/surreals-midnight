@@ -21,16 +21,16 @@ const Home: NextPage = () => {
 
 
   return (
-    <div className='w-full h-full sm:h-screen bg-stormMobile sm:bg-storm bg-center bg-cover relative pb-9'
+    <div className='w-full h-full bg-stormMobile sm:bg-storm bg-center bg-cover relative flex flex-col pb-9'
       style={{
-        backgroundSize: "100% 100%"
+        backgroundSize: "100% 100%",
       }}>
       <Head>
         <title>Surreals Midnight</title>
         <meta name="description" content="Surreals Midnight" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      
       <div className='sm:flex hidden justify-center flex-col w-full items-center pt-10'>
         <Image src={Logo} />
       </div>
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
       </div>
 
       <div className='hidden sm:flex justify-center flex-col w-full items-center absolute bottom-0'>
-        <Image src={Coral} className='mt-10 hidden lg:flex items-center'  />
+        <Image src={Coral} className=' hidden lg:flex items-center' />
       </div>
 
       <div className='flex flex-col mt-24 sm:mt-0 sm:flex-row sm:justify-between justify-center items-center gap-y-40 lg:mx-60'>
