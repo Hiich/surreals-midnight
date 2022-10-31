@@ -22,7 +22,6 @@ export const MintingCard = () => {
                     </div>
                     <button
                         onClick={() => {
-                            (new Audio("/sounds/pool.mp3")).play()
                             router.push('/pool')
                         }}
                         className='bg-[#461B1C] w-[90%] p-2 px-10 text-white rounded-lg my-4 z-20'

@@ -11,14 +11,14 @@ const Pool: NextPage = () => {
     const { account, connect, sacrifice, approve, isApproved, getApproval, sacrifices } = useDappStore()
     const router = useRouter()
     const [tokenId, setTokenId] = useState("")
-    useEffect(() => getApproval, [account])
+    useEffect(() => getApproval, [])
     return (
         <div className='h-screen bg-endOflightMobile sm:bg-endOflight bg-auto bg-center bg-no-repeat w-full'
             style={{
                 backgroundSize: "100% 100%"
             }}>
             <Head>
-                <title>Surreals Midnight - Connect Wallet</title>
+                <title>Surreals Midnight - The Dark Portal</title>
                 <meta name="description" content="Surreals Midnight" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
@@ -41,12 +41,14 @@ const Pool: NextPage = () => {
                                     console.log(tokenIds)
 
                                     if (tokenIds.length > 3) toast.error("Cannot sacrifice more than 3")
-                                    else
+                                    else {
+                                        (new Audio("/sounds/pool.mp3")).play()
                                         await toast.promise(sacrifice(tokenIds), {
                                             success: "Successfully sacrificed",
                                             loading: "Sacrificing...",
                                             error: "Error while sacrificing, please contact our support"
                                         })
+                                    }
                                 }}>
                                 SACRIFICE
                             </button>

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import PreReveal from "@/../public/images/prereveal.gif"
+import toast from 'react-hot-toast'
 export const PoolCard = () => {
     const router = useRouter()
 
@@ -13,7 +14,7 @@ export const PoolCard = () => {
                 <div className='flex flex-col bg-black justify-center items-center  top-[85px] '>
                     <div className='text-white text-center mx-4 mt-12 h-full flex flex-col'>
                         {/* <Image src="/images/prereveal.gif" height={"240"} width={"263"} /> */}
-                        <Image src={PreReveal} className="rounded-xl mx-10"/>
+                        <Image src={PreReveal} className="rounded-xl mx-10" />
                         <span className='mt-4'>
                             Surreals that are relinquished to the Dark Portal will be rewarded with Dark Surreals.
                         </span><br />
@@ -23,8 +24,9 @@ export const PoolCard = () => {
                     </div>
                     <button
                         onClick={() => {
-                            (new Audio("/sounds/mint.mp3")).play()
-                            router.push('/mint')
+                            // (new Audio("/sounds/mint.mp3")).play()
+                            // router.push('/mint')
+                            toast("Mint coming soon...")
                         }}
                         className='bg-[#461B1C] w-[90%] p-2 px-10 text-white rounded-lg my-4 mt-10 z-20'
                     >
