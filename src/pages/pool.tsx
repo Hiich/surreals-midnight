@@ -11,7 +11,7 @@ const Pool: NextPage = () => {
     const { account, connect, sacrifice, approve, isApproved, getApproval, sacrifices } = useDappStore()
     const router = useRouter()
     const [tokenId, setTokenId] = useState("")
-    useEffect(() => getApproval, [])
+    useEffect(() => getApproval, [account])
     return (
         <div className='h-screen bg-endOflightMobile sm:bg-endOflight bg-auto bg-center bg-no-repeat w-full'
             style={{
