@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import Surreals from "@/../public/images/surreals.gif"
+import toast from 'react-hot-toast'
 export const MintingCard = () => {
     const router = useRouter()
 
@@ -22,7 +23,8 @@ export const MintingCard = () => {
                     </div>
                     <button
                         onClick={() => {
-                            router.push('/pool')
+                            // router.push('/pool')
+                            toast("Dark Portal is closed !")
                         }}
                         className='bg-[#461B1C] w-[90%] p-2 px-10 text-white rounded-lg my-4 z-20'
                     >
