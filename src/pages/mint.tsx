@@ -14,6 +14,7 @@ const Pool: NextPage = () => {
     const { account, mint, connect, sacrifices } = useDappStore()
     const [mintAmount, setMintAmount] = useState(1)
     const router = useRouter()
+    
     return (
         <div className='h-full sm:h-screen bg-crimsonMobile sm:bg-crimson bg-cover bg-center bg-no-repeat relative pb-10 sm:pb-0'
             style={{
@@ -34,7 +35,7 @@ const Pool: NextPage = () => {
                     <Image src={LogoMobile} />
                 </div>
 
-                <div className='flex flex-col gap-2 justify-center  items-center w-fit h-full pt-10 sm:pt-0'>
+                <div className='flex flex-col gap-2 justify-center  items-center w-fit h-full pt-10 sm:pt-0 z-20'>
                     <div className='bg-black p-5'>
                         <Image src="/images/prereveal.gif" height={"240"} width={"263"} />
                     </div>
@@ -51,8 +52,10 @@ const Pool: NextPage = () => {
                                 </button>
                                 <span className="w-fit bg-[#D9D9D9] text-black rounded-xl px-4">{mintAmount}</span>
                                 <button onClick={() => {
-                                    if (mintAmount < 10)
+                                    if (mintAmount < 9)
                                         setMintAmount(mintAmount + 1)
+                                    else
+                                        toast.error("Max mintable amount is 9")
                                 }}>
                                     +
                                 </button>
@@ -67,7 +70,7 @@ const Pool: NextPage = () => {
                                     })}>
                                 MINT
                             </button>
-                            <span className='bg-black rounded-xl p-2 px-16 w-fit text-white'>
+                            <span className='bg-black rounded-xl p-2 w-fit text-white'>
                                 Free mints available : {sacrifices}
                             </span>
                         </div>

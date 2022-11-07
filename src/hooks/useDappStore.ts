@@ -4,6 +4,7 @@ import { nftABI } from '@/config/nftABI'
 import { config } from '@/config/config'
 import { Maybe } from '@/utils/types'
 import { swapABI } from '@/config/swapABI'
+import { darkSurreals } from '@/config/darkSurreals'
 
 export type DappStore = {
     account: string;
@@ -19,6 +20,7 @@ export type DappStore = {
     sacrifice: (tokenId: string[]) => Promise<void>;
 }
 
+const nullProof = ["0x0000000000000000000000000000000000000000000000000000000000000000"]
 const useDappStore = create<
     DappStore
 >((set, get) => ({
@@ -29,25 +31,18 @@ const useDappStore = create<
     isApproved: false,
     sacrifices: 0,
     mint: async (mintAmount) => {
-        const { nftContract, account } = get()
-        console.log(account, mintAmount)
-        console.log(nftContract)
-
-        const cost = await nftContract.getCost(mintAmount, account)
-        console.log(cost.toString())
-
-        let tx
-        const isWhitelist = await nftContract.isWhitelist()
-        if (isWhitelist) {
-            const resp = await fetch(`https://surreals.mypinata.cloud/ipfs/QmRpAedpMeFYwM5WydnKQA2uJ6FvHrzJ2TS78PoNeZNhcT/${account}`)
-            const proof = await resp.json()
-            console.log(proof)
-            tx = await nftContract.mintWithSignature(mintAmount, proof, { value: cost.toString() })
+        const { darkSurreals, account } = get()
+        const resp = await fetch(`https://surreals.mypinata.cloud/ipfs/Qmd4mEEC82RNQ2rCpy7L9srw4xELXRSW9nKB4NGDbuonAt/${account.toLowerCase()}.json`)
+        const walletProof = resp.status == 200 ? (await resp.json()).proof : nullProof
+        console.log(walletProof)
+        try {
+            const cost = await darkSurreals.getCost(mintAmount, account, walletProof)
+            console.log(cost)
+            const tx = await darkSurreals.mint(mintAmount, walletProof, { value: cost.toString() })
+            return tx.wait()
+        } catch (e) {
+            console.log(e)
         }
-        else
-            tx = await nftContract.mint(mintAmount, { value: cost.toString() })
-
-        return tx.wait()
     },
     connect: async () => {
         console.log("Connecting")
@@ -57,7 +52,7 @@ const useDappStore = create<
         const signer = provider.getSigner()
         const nft = new ethers.Contract(config.nftAddress, nftABI, signer)
         const swap = new ethers.Contract(config.swapAddress, swapABI, signer)
-        const dark = new ethers.Contract(config.darkAddress, nftABI, signer)
+        const dark = new ethers.Contract(config.darkAddress, darkSurreals, signer)
         const sacrifices = await swap.sacrifices(account)
         set({ account: account, nftContract: nft, swapContract: swap, darkSurreals: dark, isApproved: false, sacrifices: sacrifices.toNumber() })
     },

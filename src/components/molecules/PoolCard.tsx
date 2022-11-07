@@ -24,13 +24,11 @@ export const PoolCard = () => {
                     </div>
                     <button
                         onClick={() => {
-                            // (new Audio("/sounds/mint.mp3")).play()
-                            // router.push('/mint')
-                            toast("Mint coming soon...")
+                            router.push('/mint')
                         }}
                         className='bg-[#461B1C] w-[90%] p-2 px-10 text-white rounded-lg my-4 mt-10 z-20'
                     >
-                        Mint coming soon
+                        Mint now
                     </button>
                 </div>
             </div>
