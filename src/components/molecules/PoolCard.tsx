@@ -24,7 +24,7 @@ export const PoolCard = () => {
                     </div>
                     <button
                         onClick={() => {
-                            router.push('/mint')
+                            toast("Minting is closed")
                         }}
                         className='bg-[#461B1C] w-[90%] p-2 px-10 text-white rounded-lg my-4 mt-10 z-20'
                     >

@@ -7,13 +7,17 @@ import Logo from '@/../public/images/logo.png'
 import LogoMobile from '@/../public/images/logoMobile.png'
 import useDappStore from '@/hooks/useDappStore'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 
 const Pool: NextPage = () => {
     const { account, mint, connect, sacrifices } = useDappStore()
     const [mintAmount, setMintAmount] = useState(1)
     const router = useRouter()
+
+    useEffect(() => {
+        router.push('/')
+    }, [])
     
     return (
         <div className='h-full sm:h-screen bg-crimsonMobile sm:bg-crimson bg-cover bg-center bg-no-repeat relative pb-10 sm:pb-0'
