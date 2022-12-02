@@ -9,6 +9,7 @@ import Coral from '@/../public/images/coral1.png'
 import useDappStore from '@/hooks/useDappStore'
 import { PoolCard } from '@/components/molecules/PoolCard'
 import { MintingCard } from '@/components/molecules/MintingCard'
+import { Toaster } from 'react-hot-toast'
 
 const Home: NextPage = () => {
   const router = useRouter()
@@ -30,7 +31,7 @@ const Home: NextPage = () => {
         <meta name="description" content="Surreals Midnight" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      
+
       <div className='sm:flex hidden justify-center flex-col w-full items-center pt-10'>
         <Image src={Logo} />
       </div>
@@ -46,6 +47,7 @@ const Home: NextPage = () => {
         <MintingCard />
         <PoolCard />
       </div>
+      <Toaster />
     </div>
   )
 }
